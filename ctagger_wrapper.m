@@ -2,8 +2,7 @@ function selectedTags = ctagger_wrapper(eventStruct)
     % Load the CTAGGER Java package or JAR file
     javaaddpath('CTagger/CTagger.jar'); 
     
-    import CTagger;       
-    import HedValidator;   
+    import CTagger;      
     
     % Initialize the CTAGGER GUI with event data
     % Instantiate the CTagger class and pass the event data
