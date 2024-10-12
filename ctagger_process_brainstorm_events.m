@@ -1,5 +1,4 @@
 function ctagger_process_brainstorm_events()
-    % Check if Brainstorm is running
     if ~brainstorm('status')
         error('Brainstorm is not running.');
     end
@@ -16,7 +15,7 @@ function ctagger_process_brainstorm_events()
         error('No event files found in the current protocol.');
     end
     
-    % For simplicity, process the first file
+    %rocess the first file
     sMat = in_bst_data(sFiles(1).FileName);
     
     % Extract events from the loaded file
@@ -32,6 +31,5 @@ function ctagger_process_brainstorm_events()
     disp('Selected HED Tags:');
     disp(selectedTags);
     
-    % Optionally, save the tags back into Brainstorm event structure or to a file
-    % save_tags_to_brainstorm(selectedTags, sMat);
+    save_tags_to_brainstorm(selectedTags, sMat);
 end

@@ -1,3 +1,5 @@
+%not sure what this file should look like
+
 function brainstorm_plugin
     % Main entry point for the CTAGGER plugin
     disp('CTAGGER Plugin for Brainstorm initialized.');
