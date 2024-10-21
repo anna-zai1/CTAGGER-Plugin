@@ -1,8 +1,9 @@
 function selectedTags = ctagger_wrapper(eventStruct)
     % Load the CTAGGER Java package or JAR file
-    javaaddpath('CTagger/CTagger.jar'); 
+    javaaddpath('CTAGGER/CTAGGER.jar'); 
     
-    import CTagger;      
+    import CTagger;       
+    import HedValidator;   
     
     % Initialize the CTAGGER GUI with event data
     % Instantiate the CTagger class and pass the event data
@@ -16,4 +17,6 @@ function selectedTags = ctagger_wrapper(eventStruct)
     
     % Retrieve the selected tags from CTAGGER after GUI is closed
     selectedTags = ctagger.getSelectedTags(); 
-    end
+    
+    % Return the selected tags to MATLAB for further processing
+end
