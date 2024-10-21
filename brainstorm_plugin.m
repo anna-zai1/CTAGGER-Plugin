@@ -1,12 +1,18 @@
-%not sure what this file should look like
+function ctagger_plugin_install()
+    % Path to the CTAGGER folder
+    pluginPath = '/path/to/CTAGGER';
 
-function brainstorm_plugin
-    % Main entry point for the CTAGGER plugin
-    disp('CTAGGER Plugin for Brainstorm initialized.');
-    
-    % Add paths for the plugin (assuming the structure has a 'ctagger' folder with relevant files)
-    addpath(genpath(fullfile(fileparts(mfilename('fullpath')), 'ctagger')));
+    % Check if CTAGGER is already in the path
+    if ~exist(pluginPath, 'dir')
+        error('CTAGGER Plugin folder does not exist: %s', pluginPath);
+    end
 
-    % Call the main function for processing event data with CTAGGER
-    ctagger_process_brainstorm_events();
+    % Add the CTAGGER jar file to Java classpath
+    javaaddpath(fullfile(pluginPath, 'CTAGGER.jar'));
+
+    % Add the CTAGGER folder to MATLAB path
+    addpath(pluginPath);
+
+    % Display success message
+    disp('CTAGGER plugin successfully installed!');
 end
