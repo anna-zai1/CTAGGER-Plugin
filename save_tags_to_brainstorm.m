@@ -1,33 +1,15 @@
 function save_tags_to_brainstorm(selectedTags, sMat)
-    % This function saves the selected HED tags to the Brainstorm structure (sMat).
-    % Inputs:
-    %    - selectedTags: The HED tags selected by the user (output of CTAGGER)
-    %    - sMat: The Brainstorm structure to which the tags will be added
-
-    % Check if the sMat structure has an 'Events' field, if not, create it
-    if ~isfield(sMat, 'Events')
-        sMat.Events = struct();
+    % Check if hedTags field exists, if not, initialize it
+    if ~isfield(sMat, 'hedTags')
+        sMat.hedTags = cell(size(sMat.events)); % Initialize with empty cells
     end
     
-    % Assuming selectedTags is a structure or a cell array of tag strings
-    % Loop over the selected tags and add them to the sMat.Events structure
-    for iTag = 1:length(selectedTags)
-        tag = selectedTags{iTag}; % Extract each tag
-
-        % Create an event structure for each tag
-        eventName = ['HED_' tag];
-
-        % If the event doesn't exist in sMat.Events, create it
-        if ~isfield(sMat.Events, eventName)
-            sMat.Events.(eventName) = struct();
-            sMat.Events.(eventName).label = tag;
-            sMat.Events.(eventName).times = []; 
-            sMat.Events.(eventName).epochs = []; 
-        end
-
+    % Assuming selectedTags is a cell array of tags for each event
+    for i = 1:length(sMat.events)
+        sMat.hedTags{i} = selectedTags{i}; % Save selected tags
     end
-
-    % Save or update the modified sMat structure in Brainstorm
-    brainstorm('save', sMat.FileName, sMat);  
-    disp('Selected HED tags saved to Brainstorm data structure');
+    
+    % Save sMat back to Brainstorm format
+    bst_save(sMat);
 end
+
