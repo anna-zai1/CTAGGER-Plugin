@@ -1,5 +1,5 @@
 function ctagger_wrapper(eventStruct)
-    javaaddpath('CTagger.jar');  % Update with the correct path to CTagger.jar
+    javaaddpath('CTagger.jar');  
     
     import CTagger;
     
