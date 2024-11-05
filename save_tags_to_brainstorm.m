@@ -4,9 +4,8 @@ function save_tags_to_brainstorm(selectedTags, sMat)
         sMat.hedTags = cell(size(sMat.events)); % Initialize with empty cells
     end
     
-    % Assuming selectedTags is a cell array of tags for each event
     for i = 1:length(sMat.events)
-        sMat.hedTags{i} = selectedTags{i}; % Save selected tags
+        sMat.hedTags{i} = selectedTags{i};
     end
     
     % Save sMat back to Brainstorm format
