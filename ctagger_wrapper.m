@@ -11,7 +11,7 @@ function ctagger_wrapper(eventStruct, sMat)
         warning('loadEventData method does not exist in CTagger.');
     end
     
-    selectedTags = {}; 
+    selectedTags = {}; %figure out how to save the selected tags
     
     if ~isempty(selectedTags)
         save_tags_to_brainstorm(selectedTags, sMat);
