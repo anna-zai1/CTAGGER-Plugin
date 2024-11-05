@@ -2,7 +2,6 @@ function selectedTags = ctagger_wrapper(eventStruct)
     javaaddpath('CTagger.jar'); 
     
     import CTagger;       
-    import HedValidator;   
     
     ctagger = javaObject('CTagger', false, false, '', '', true);
     ctagger.loadEventData(eventStruct);
