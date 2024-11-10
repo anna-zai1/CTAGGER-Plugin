@@ -9,9 +9,7 @@ end
 
 
 function OpenCTAGGER(events)
-    % Open CTAGGER GUI for HED tag selection and validation
     try
-        % Assuming CTAGGER has a command-line interface for MATLAB
         hedTags = runCTAGGERGUI(events);
         % Update the event structure with selected tags
         events = AddHEDTagsToEvents(events, hedTags);
