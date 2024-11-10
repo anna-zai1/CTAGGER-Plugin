@@ -1,10 +1,10 @@
 function InitializeCTAGGERPlugin
-    ctaggerPath = 'CTagger.jar';
+    ctaggerPath = 'CTagger.kt';
     if ~contains(path, ctaggerPath)
         addpath(genpath(ctaggerPath));
     end
 end
 
 function RemoveCTAGGERPlugin
-    rmpath(genpath('CTagger.jar'));
+    rmpath(genpath('CTagger.kt'));
 end
