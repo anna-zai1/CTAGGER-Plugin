@@ -1,13 +1,10 @@
-function ctagger_plugin_install()
-    pluginPath = 'CTAGGER';
-
-    if ~exist(pluginPath, 'dir')
-        error('CTAGGER Plugin folder does not exist: %s', pluginPath);
+function InitializeCTAGGERPlugin
+    ctaggerPath = 'CTagger.jar';
+    if ~contains(path, ctaggerPath)
+        addpath(genpath(ctaggerPath));
     end
+end
 
-    javaaddpath(fullfile(pluginPath, 'CTAGGER.jar'));
-
-    addpath(pluginPath);
-
-    disp('CTAGGER plugin successfully installed!');
+function RemoveCTAGGERPlugin
+    rmpath(genpath('CTagger.jar'));
 end
