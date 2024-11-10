@@ -452,6 +452,21 @@ class CTagger(
         }
         return jsonFieldMap
     }
+
+    fun exportSelectedTagsToFile(fMap: HashMap<String, HashMap<String, String>>, outputFilePath: String) {
+        val gson = GsonBuilder().setPrettyPrinting().create()
+        val json = gson.toJson(fMap)
+        
+        try {
+            FileWriter(outputFilePath).use { writer ->
+                writer.write(json)
+            }
+            println("Tags successfully exported to $outputFilePath")
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+    
     fun prettyPrintJson(fieldMap: HashMap<String, Any>): String {
         val gson = GsonBuilder().setPrettyPrinting().create()
         return gson.toJson(fieldMap)
