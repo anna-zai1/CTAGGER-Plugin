@@ -1,14 +1,8 @@
-function save_tags_to_brainstorm(selectedTags, sMat)
-    % Check if hedTags field exists, if not, initialize it
-    if ~isfield(sMat, 'hedTags')
-        sMat.hedTags = cell(size(sMat.events)); % Initialize with empty cells
+function events = AddHEDTagsToEvents(events, hedTags)
+    if ~isfield(events, 'hedTags')
+        [events.hedTags] = deal({});
     end
-    
-    for i = 1:length(sMat.events)
-        sMat.hedTags{i} = selectedTags{i};
+    for i = 1:numel(events)
+        events(i).hedTags = hedTags{i};
     end
-    
-    % Save sMat back to Brainstorm format
-    bst_save(sMat);
 end
-
